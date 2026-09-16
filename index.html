@@ -3,32 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRIAL. - Idea to Real</title>
+<title>TRIAL. - My First Trial</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;}
   nav{display:flex;justify-content:space-between;padding:30px 6%;border-bottom:1px solid #1a1a1a;position:sticky;top:0;background:#0a0a0a;z-index:10}
   .logo{font-family:'Space Grotesk',sans-serif;letter-spacing:5px;font-weight:700;font-size:22px}
-  .nav-links{font-size:12px;letter-spacing:2px;color:#888;display:flex;gap:20px}
-  .hero{padding:60px 6% 30px 6%;}
-  .hero h1{font-family:'Space Grotesk',sans-serif;font-size: clamp(32px, 8vw, 64px);line-height:1.1;max-width:600px;font-weight:700}
-  .container{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px 6% 80px 6%;}
+  .nav-links{font-size:11px;letter-spacing:2px;color:#555;display:flex;gap:20px}
+  .badge{display:inline-block;border:1px solid #333;padding:6px 12px;font-size:10px;letter-spacing:2px;color:#888;margin-bottom:25px;font-family:'Space Grotesk'}
+  .hero{padding:50px 6% 30px 6%;}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-size: clamp(36px, 8vw, 72px);line-height:0.95;max-width:750px;font-weight:700}
+  .hero h1 span{color:#444}
+  .hero .sub{color:#999;font-size:16px;margin-top:25px;max-width:520px;line-height:1.7;}
+  .hero .sub b{color:#fff;font-weight:500}
+  .container{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:30px 6% 80px 6%;}
   @media(max-width:768px){.container{grid-template-columns:1fr}}
-  .card{border:1px solid #222;padding:35px;min-height:480px;display:flex;flex-direction:column;transition:0.3s;background:#11111108}
+  .card{border:1px solid #222;padding:35px;min-height:500px;display:flex;flex-direction:column;transition:0.3s;background:#11111108}
   .card:hover{border-color:#444;background:#111}
-  .num{color:#333;font-size:14px;letter-spacing:2px;margin-bottom:50px;font-family:'Space Grotesk'}
+  .num{color:#333;font-size:14px;letter-spacing:2px;margin-bottom:40px;font-family:'Space Grotesk'}
   .card h2{font-family:'Space Grotesk';font-size:32px;margin-bottom:15px;letter-spacing:1px}
   .card p{color:#666;font-size:14px;line-height:1.6;margin-bottom:25px}
-  input, textarea{width:100%;background:#0a0a0a;border:1px solid #222;color:#fff;padding:14px;margin-bottom:12px;font-family:'Inter';font-size:14px;outline:none;transition:0.2s}
+  input, textarea{width:100%;background:#0a0a0a;border:1px solid #222;color:#fff;padding:14px;margin-bottom:12px;font-family:'Inter';font-size:14px;outline:none}
   input:focus, textarea:focus{border-color:#555}
-  textarea{height:100px;resize:none}
-  button{background:#fff;color:#000;border:none;padding:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:0.2s;font-family:'Space Grotesk';margin-top:auto}
-  button:hover{background:#ddd;transform:translateY(-1px)}
+  textarea{height:110px;resize:none}
+  button{background:#fff;color:#000;border:none;padding:14px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Space Grotesk';margin-top:auto}
+  button:hover{background:#ddd}
   .btn-ghost{background:transparent;color:#fff;border:1px solid #333}
   .btn-ghost:hover{background:#fff;color:#000}
-  .list{margin-top:20px;border-top:1px solid #1a1a1a;padding-top:15px;max-height:200px;overflow-y:auto}
-  .list-item{background:#0a0a0a;border:1px solid #1a1a1a;padding:12px;margin-bottom:8px;font-size:13px;color:#aaa}
+  .list{margin-top:20px;border-top:1px solid #1a1a1a;padding-top:15px;max-height:220px;overflow-y:auto}
+  .list-item{background:#0f0f0f;border:1px solid #1a1a1a;padding:12px;margin-bottom:8px;font-size:13px;color:#aaa}
   .list-item strong{color:#fff;display:block;margin-bottom:4px}
   footer{border-top:1px solid #1a1a1a;padding:25px 6%;color:#444;font-size:11px;letter-spacing:2px;display:flex;justify-content:space-between}
 </style>
@@ -37,81 +41,70 @@
 
 <nav>
   <div class="logo">TRIAL.</div>
-  <div class="nav-links"><span>ABOUT</span><span>PROCESS</span></div>
+  <div class="nav-links"><span>MY FIRST TRIAL</span></div>
 </nav>
 
 <div class="hero">
-  <h1>From an idea to something real.</h1>
+  <div class="badge">⚡ THIS IS A TRIAL WEBSITE</div>
+  <h1>From an idea <span>to something real.</span></h1>
+  <div class="sub">
+    Ami akta <b>trial korlam.</b> Eta amar first website.<br>
+    Ki ki improve kora jay? Design, idea, bug ja ase — niche likhe daw. <br>
+    <b>Give me your suggestions 🙏</b>
+  </div>
 </div>
 
 <div class="container">
-  <!-- 01 IDEA BOX -->
+  <!-- IDEA BOX -->
   <div class="card">
-    <div class="num">01</div>
-    <h2>IDEA</h2>
-    <p>Have an idea? Drop it here. Every great project starts with a simple thought.</p>
-    
+    <div class="num">01 / IDEA</div>
+    <h2>Share Idea</h2>
+    <p>Tumar mathay kono idea thakle ekhane likho. Ki add korle valo lagbe?</p>
     <input type="text" id="ideaName" placeholder="Your Name">
-    <textarea id="ideaText" placeholder="Write your idea here..."></textarea>
+    <textarea id="ideaText" placeholder="Tumar idea ta likho..."></textarea>
     <button onclick="submitIdea()">SUBMIT IDEA →</button>
-
     <div class="list" id="ideaList"></div>
   </div>
 
-  <!-- 02 ISSUE BOX -->
+  <!-- ISSUE BOX -->
   <div class="card">
-    <div class="num">02</div>
-    <h2>FIX IT</h2>
-    <p>Found a bug or something broken? Tell us what went wrong.</p>
-    
+    <div class="num">02 / IMPROVE</div>
+    <h2>What to Improve?</h2>
+    <p>Ki bhul hoise ba ki improve kora jay? Khola mone bolo.</p>
     <input type="text" id="issueName" placeholder="Your Name">
-    <textarea id="issueText" placeholder="What went wrong?"></textarea>
-    <button class="btn-ghost" onclick="submitIssue()">REPORT ISSUE →</button>
-
+    <textarea id="issueText" placeholder="Ki improve kora jay..."></textarea>
+    <button class="btn-ghost" onclick="submitIssue()">GIVE SUGGESTION →</button>
     <div class="list" id="issueList"></div>
   </div>
 </div>
 
 <footer>
-  <span>© 2026 TRIAL.</span>
-  <span>BUILT WITH COURAGE</span>
+  <span>© 2026 TRIAL. — JUST A TRIAL PROJECT</span>
+  <span>LEARNING IN PUBLIC</span>
 </footer>
 
 <script>
-  // Load old data
   let ideas = JSON.parse(localStorage.getItem('trial_ideas') || '[]');
   let issues = JSON.parse(localStorage.getItem('trial_issues') || '[]');
-  
   function render(){
-    document.getElementById('ideaList').innerHTML = ideas.map(i => 
-      `<div class="list-item"><strong>${i.name}</strong>${i.text}</div>`
-    ).join('');
-    document.getElementById('issueList').innerHTML = issues.map(i => 
-      `<div class="list-item"><strong>${i.name} - BUG</strong>${i.text}</div>`
-    ).join('');
+    document.getElementById('ideaList').innerHTML = ideas.map(i => `<div class="list-item"><strong>${i.name}</strong>${i.text}</div>`).join('');
+    document.getElementById('issueList').innerHTML = issues.map(i => `<div class="list-item"><strong>${i.name}</strong>${i.text}</div>`).join('');
   }
   render();
-
   function submitIdea(){
     const name = document.getElementById('ideaName').value || 'Anonymous';
     const text = document.getElementById('ideaText').value;
-    if(!text) return alert('Please write an idea!');
-    ideas.unshift({name, text});
-    localStorage.setItem('trial_ideas', JSON.stringify(ideas));
-    document.getElementById('ideaText').value='';
-    render();
+    if(!text) return alert('Idea likho!');
+    ideas.unshift({name, text}); localStorage.setItem('trial_ideas', JSON.stringify(ideas));
+    document.getElementById('ideaText').value=''; render();
   }
-
   function submitIssue(){
     const name = document.getElementById('issueName').value || 'Anonymous';
     const text = document.getElementById('issueText').value;
-    if(!text) return alert('Please describe the issue!');
-    issues.unshift({name, text});
-    localStorage.setItem('trial_issues', JSON.stringify(issues));
-    document.getElementById('issueText').value='';
-    render();
+    if(!text) return alert('Suggestion likho!');
+    issues.unshift({name, text}); localStorage.setItem('trial_issues', JSON.stringify(issues));
+    document.getElementById('issueText').value=''; render();
   }
 </script>
-
 </body>
 </html>

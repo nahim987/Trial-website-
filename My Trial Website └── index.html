@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TRIAL — A First Creation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5,5,5,0.75);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background:
+                radial-gradient(circle at center, #1b1b1b 0%, #050505 55%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .small-title {
+            color: #888;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(55px, 14vw, 150px);
+            line-height: 0.9;
+            letter-spacing: -6px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            max-width: 550px;
+            margin: 35px auto;
+            color: #999;
+            font-size: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 28px;
+            border: 1px solid #555;
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* SECTION */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-label {
+            color: #777;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(35px, 7vw, 75px);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            max-width: 650px;
+            color: #999;
+            font-size: 16px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 60px;
+        }
+
+        .card {
+            min-height: 260px;
+            padding: 35px;
+            border: 1px solid #222;
+            background: #0b0b0b;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #555;
+        }
+
+        .number {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .card h3 {
+            margin-top: 70px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* MESSAGE */
+
+        .message {
+            text-align: center;
+            background: #f5f5f5;
+            color: #080808;
+        }
+
+        .message h2 {
+            font-size: clamp(40px, 8vw, 90px);
+            line-height: 1;
+            letter-spacing: -3px;
+        }
+
+        .message p {
+            max-width: 600px;
+            margin: 30px auto;
+            color: #555;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 45px 8%;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 9px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">TRIAL.</div>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#process">Process</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                A First Digital Experiment
+            </div>
+
+            <h1>TRIAL</h1>
+
+            <p>
+                This website is not the final destination.
+                It is the beginning of a journey into design,
+                technology and creativity.
+            </p>
+
+            <a href="#about" class="button">
+                Explore
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-label">
+            01 — About
+        </div>
+
+        <h2 class="section-title">
+            Built to learn.<br>
+            Designed to evolve.
+        </h2>
+
+        <p class="description">
+            This website was created as a trial project while learning
+            how websites are designed and developed using nothing more
+            than a smartphone and modern AI tools.
+        </p>
+
+    </section>
+
+
+    <!-- PROCESS -->
+
+    <section id="process">
+
+        <div class="section-label">
+            02 — The Process
+        </div>
+
+        <h2 class="section-title">
+            From an idea<br>
+            to something real.
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="number">01</div>
+
+                <h3>IDEA</h3>
+
+                <p>
+                    Every project begins with a simple idea
+                    and the courage to start.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="number">02</div>
+
+                <h3>CREATE</h3>
+
+                <p>
+                    AI, code and creativity come together
+                    to turn an idea into a digital experience.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="number">03</div>
+
+                <h3>EVOLVE</h3>
+
+                <p>
+                    A first version is never the final version.
+                    Learn, improve and build again.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MESSAGE -->
+
+    <section class="message">
+
+        <div class="section-label">
+            Final Note
+        </div>
+
+        <h2>
+            This is only<br>
+            the beginning.
+        </h2>
+
+        <p>
+            If you're seeing this website, you're looking at
+            one of my first steps into web development.
+            More ideas are coming.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>TRIAL © 2026</div>
+
+        <div>BUILT WITH AI + PHONE</div>
+
+    </footer>
+
+</body>
+</html>

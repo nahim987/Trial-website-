@@ -10,13 +10,11 @@
   body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;}
   nav{display:flex;justify-content:space-between;padding:30px 6%;border-bottom:1px solid #1a1a1a;position:sticky;top:0;background:#0a0a0a;z-index:10}
   .logo{font-family:'Space Grotesk',sans-serif;letter-spacing:5px;font-weight:700;font-size:22px}
-  .nav-links{font-size:11px;letter-spacing:2px;color:#555;display:flex;gap:20px}
   .badge{display:inline-block;border:1px solid #333;padding:6px 12px;font-size:10px;letter-spacing:2px;color:#888;margin-bottom:25px;font-family:'Space Grotesk'}
   .hero{padding:50px 6% 30px 6%;}
   .hero h1{font-family:'Space Grotesk',sans-serif;font-size: clamp(36px, 8vw, 72px);line-height:0.95;max-width:750px;font-weight:700}
   .hero h1 span{color:#444}
   .hero .sub{color:#999;font-size:16px;margin-top:25px;max-width:520px;line-height:1.7;}
-  .hero .sub b{color:#fff;font-weight:500}
   .container{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:30px 6% 80px 6%;}
   @media(max-width:768px){.container{grid-template-columns:1fr}}
   .card{border:1px solid #222;padding:35px;min-height:500px;display:flex;flex-direction:column;transition:0.3s;background:#11111108}
@@ -25,77 +23,72 @@
   .card h2{font-family:'Space Grotesk';font-size:32px;margin-bottom:15px;letter-spacing:1px}
   .card p{color:#666;font-size:14px;line-height:1.6;margin-bottom:25px}
   input, textarea{width:100%;background:#0a0a0a;border:1px solid #222;color:#fff;padding:14px;margin-bottom:12px;font-family:'Inter';font-size:14px;outline:none}
-  input:focus, textarea:focus{border-color:#555}
   textarea{height:110px;resize:none}
   button{background:#fff;color:#000;border:none;padding:14px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Space Grotesk';margin-top:auto}
-  button:hover{background:#ddd}
   .btn-ghost{background:transparent;color:#fff;border:1px solid #333}
-  .btn-ghost:hover{background:#fff;color:#000}
-  .list{margin-top:20px;border-top:1px solid #1a1a1a;padding-top:15px;max-height:220px;overflow-y:auto}
-  .list-item{background:#0f0f0f;border:1px solid #1a1a1a;padding:12px;margin-bottom:8px;font-size:13px;color:#aaa}
-  .list-item strong{color:#fff;display:block;margin-bottom:4px}
+  .success{display:none;background:#00ff88;color:#000;padding:10px;font-size:13px;margin-top:10px;text-align:center;font-weight:700}
   footer{border-top:1px solid #1a1a1a;padding:25px 6%;color:#444;font-size:11px;letter-spacing:2px;display:flex;justify-content:space-between}
 </style>
 </head>
 <body>
-<nav>
-  <div class="logo">TRIAL.</div>
-  <div class="nav-links"><span>MY FIRST TRIAL</span></div>
-</nav>
+<nav><div class="logo">TRIAL.</div><span style="font-size:11px;letter-spacing:2px;color:#555">MY FIRST TRIAL</span></nav>
 <div class="hero">
   <div class="badge">⚡ THIS IS A TRIAL WEBSITE</div>
   <h1>From an idea <span>to something real.</span></h1>
-  <div class="sub">
-    I made this website for trial. This is my first project and I am still learning.<br>
-    What can be improved? How can I make it better?<br>
-    <b>Give me your suggestions 🙏</b>
-  </div>
+  <div class="sub">I made this for trial. Give me your suggestions 🙏<br>Every suggestion will come to my email.</div>
 </div>
 <div class="container">
   <div class="card">
     <div class="num">01 / IDEA</div>
     <h2>Share Idea</h2>
-    <p>Have an idea in mind? Drop it here. What should I add next?</p>
+    <p>Your idea will come directly to my email.</p>
     <input type="text" id="ideaName" placeholder="Your Name">
     <textarea id="ideaText" placeholder="Write your idea here..."></textarea>
     <button onclick="submitIdea()">SUBMIT IDEA →</button>
-    <div class="list" id="ideaList"></div>
+    <div class="success" id="success1">✓ Sent! Check nfnxrsa@gmail.com</div>
   </div>
   <div class="card">
     <div class="num">02 / IMPROVE</div>
     <h2>What to Improve?</h2>
-    <p>Found something wrong or have a suggestion? Let me know.</p>
+    <p>Your suggestion will come directly to my email.</p>
     <input type="text" id="issueName" placeholder="Your Name">
     <textarea id="issueText" placeholder="What can be improved?"></textarea>
     <button class="btn-ghost" onclick="submitIssue()">GIVE SUGGESTION →</button>
-    <div class="list" id="issueList"></div>
+    <div class="success" id="success2">✓ Sent! Check nfnxrsa@gmail.com</div>
   </div>
 </div>
-<footer>
-  <span>© 2026 TRIAL. — JUST A TRIAL PROJECT</span>
-  <span>LEARNING IN PUBLIC</span>
-</footer>
+<footer><span>© 2026 TRIAL.</span><span>LEARNING IN PUBLIC</span></footer>
 <script>
-  let ideas = JSON.parse(localStorage.getItem('trial_ideas') || '[]');
-  let issues = JSON.parse(localStorage.getItem('trial_issues') || '[]');
-  function render(){
-    document.getElementById('ideaList').innerHTML = ideas.map(i => `<div class="list-item"><strong>${i.name}</strong>${i.text}</div>`).join('');
-    document.getElementById('issueList').innerHTML = issues.map(i => `<div class="list-item"><strong>${i.name}</strong>${i.text}</div>`).join('');
+  const MY_EMAIL = "nfnxrsa@gmail.com"; 
+  async function sendToEmail(name, type, message, successId){
+    if(!message) return alert('Please write something!');
+    const btn = document.querySelector(`#${successId}`).previousElementSibling;
+    btn.innerText = "SENDING...";
+    try{
+      const res = await fetch(`https://formsubmit.co/ajax/${MY_EMAIL}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify({ name: name, _subject: `New ${type} from Trial Website! - ${name}`, message: message })
+      });
+      const data = await res.json();
+      if(data.success){
+        document.getElementById(successId).style.display = 'block';
+        btn.innerText = "SENT ✓";
+        setTimeout(()=>{ document.getElementById(successId).style.display='none'; btn.innerText = type=='IDEA' ? 'SUBMIT IDEA →' : 'GIVE SUGGESTION →'; }, 4000);
+      } else { alert('Failed'); btn.innerText = "TRY AGAIN"; }
+    } catch(e){ alert('Error sending'); btn.innerText = "TRY AGAIN"; }
   }
-  render();
   function submitIdea(){
     const name = document.getElementById('ideaName').value || 'Anonymous';
     const text = document.getElementById('ideaText').value;
-    if(!text) return alert('Please write an idea!');
-    ideas.unshift({name, text}); localStorage.setItem('trial_ideas', JSON.stringify(ideas));
-    document.getElementById('ideaText').value=''; render();
+    sendToEmail(name, 'IDEA', text, 'success1');
+    document.getElementById('ideaText').value='';
   }
   function submitIssue(){
     const name = document.getElementById('issueName').value || 'Anonymous';
     const text = document.getElementById('issueText').value;
-    if(!text) return alert('Please write a suggestion!');
-    issues.unshift({name, text}); localStorage.setItem('trial_issues', JSON.stringify(issues));
-    document.getElementById('issueText').value=''; render();
+    sendToEmail(name, 'SUGGESTION', text, 'success2');
+    document.getElementById('issueText').value='';
   }
 </script>
 </body>

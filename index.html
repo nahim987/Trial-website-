@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;}
+  body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;min-height:100vh}
   nav{display:flex;justify-content:space-between;padding:30px 6%;border-bottom:1px solid #1a1a1a;position:sticky;top:0;background:#0a0a0a;z-index:10}
   .logo{font-family:'Space Grotesk',sans-serif;letter-spacing:5px;font-weight:700;font-size:22px}
   .badge{display:inline-block;border:1px solid #333;padding:6px 12px;font-size:10px;letter-spacing:2px;color:#888;margin-bottom:25px;font-family:'Space Grotesk'}
@@ -17,14 +17,16 @@
   .hero .sub{color:#999;font-size:16px;margin-top:25px;max-width:520px;line-height:1.7;}
   .container{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:30px 6% 80px 6%;}
   @media(max-width:768px){.container{grid-template-columns:1fr}}
-  .card{border:1px solid #222;padding:35px;min-height:500px;display:flex;flex-direction:column;transition:0.3s;background:#11111108}
-  .card:hover{border-color:#444;background:#111}
+  .card{border:1px solid #222;padding:35px;min-height:500px;display:flex;flex-direction:column;transition:0.3s;background:#111}
+  .card:hover{border-color:#444}
   .num{color:#333;font-size:14px;letter-spacing:2px;margin-bottom:40px;font-family:'Space Grotesk'}
   .card h2{font-family:'Space Grotesk';font-size:32px;margin-bottom:15px;letter-spacing:1px}
   .card p{color:#666;font-size:14px;line-height:1.6;margin-bottom:25px}
   input, textarea{width:100%;background:#0a0a0a;border:1px solid #222;color:#fff;padding:14px;margin-bottom:12px;font-family:'Inter';font-size:14px;outline:none}
+  input:focus, textarea:focus{border-color:#555}
   textarea{height:110px;resize:none}
-  button{background:#fff;color:#000;border:none;padding:14px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Space Grotesk';margin-top:auto}
+  button{background:#fff;color:#000;border:none;padding:14px;font-weight:700;letter-spacing:1px;cursor:pointer;font-family:'Space Grotesk';margin-top:auto;transition:0.2s}
+  button:active{transform:scale(0.98)}
   .btn-ghost{background:transparent;color:#fff;border:1px solid #333}
   .success{display:none;background:#00ff88;color:#000;padding:10px;font-size:13px;margin-top:10px;text-align:center;font-weight:700}
   footer{border-top:1px solid #1a1a1a;padding:25px 6%;color:#444;font-size:11px;letter-spacing:2px;display:flex;justify-content:space-between}
@@ -32,10 +34,69 @@
 </head>
 <body>
 <nav><div class="logo">TRIAL.</div><span style="font-size:11px;letter-spacing:2px;color:#555">MY FIRST TRIAL</span></nav>
+
 <div class="hero">
   <div class="badge">⚡ THIS IS A TRIAL WEBSITE</div>
   <h1>From an idea <span>to something real.</span></h1>
   <div class="sub">I made this for trial. Give me your suggestions 🙏<br>Every suggestion will come to my email.</div>
 </div>
+
 <div class="container">
- 
+  <div class="card">
+    <div class="num">01 / IDEA</div>
+    <h2>Share Idea</h2>
+    <p>Your idea will come directly to my email nfn999888@gmail.com</p>
+    <input type="text" id="ideaName" placeholder="Your Name">
+    <textarea id="ideaText" placeholder="Write your idea here..."></textarea>
+    <button onclick="submitIdea()">SUBMIT IDEA →</button>
+    <div class="success" id="success1">✓ Sent to nfn999888@gmail.com</div>
+  </div>
+  <div class="card">
+    <div class="num">02 / IMPROVE</div>
+    <h2>What to Improve?</h2>
+    <p>Your suggestion will come directly to my email nfn999888@gmail.com</p>
+    <input type="text" id="issueName" placeholder="Your Name">
+    <textarea id="issueText" placeholder="What can be improved?"></textarea>
+    <button class="btn-ghost" onclick="submitIssue()">GIVE SUGGESTION →</button>
+    <div class="success" id="success2">✓ Sent to nfn999888@gmail.com</div>
+  </div>
+</div>
+
+<footer><span>© 2026 TRIAL.</span><span>LEARNING IN PUBLIC</span></footer>
+
+<script>
+  const MY_EMAIL = "nfn999888@gmail.com"; 
+  async function sendToEmail(name, type, message, successId){
+    if(!message) return alert('Please write something!');
+    const btn = document.querySelector(`#${successId}`).previousElementSibling;
+    const oldText = btn.innerText;
+    btn.innerText = "SENDING...";
+    try{
+      const res = await fetch(`https://formsubmit.co/ajax/${MY_EMAIL}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify({ name: name, _subject: `New ${type} from Trial Website! - ${name}`, message: message })
+      });
+      const data = await res.json();
+      if(data.success){
+        document.getElementById(successId).style.display = 'block';
+        btn.innerText = "SENT ✓";
+        setTimeout(()=>{ document.getElementById(successId).style.display='none'; btn.innerText = oldText; }, 4000);
+      } else { alert('Failed to send'); btn.innerText = oldText; }
+    } catch(e){ alert('Error! Check internet'); btn.innerText = oldText; }
+  }
+  function submitIdea(){
+    const name = document.getElementById('ideaName').value || 'Anonymous';
+    const text = document.getElementById('ideaText').value;
+    sendToEmail(name, 'IDEA', text, 'success1');
+    document.getElementById('ideaText').value='';
+  }
+  function submitIssue(){
+    const name = document.getElementById('issueName').value || 'Anonymous';
+    const text = document.getElementById('issueText').value;
+    sendToEmail(name, 'SUGGESTION', text, 'success2');
+    document.getElementById('issueText').value='';
+  }
+</script>
+</body>
+</html>
